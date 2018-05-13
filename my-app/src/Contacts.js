@@ -68,11 +68,17 @@ export class SearchBar extends Component {
                 })
             })
             .catch(function (error) {
-                console.error('error in axios get', error);
+                console.error('error in axios get', error)
+                this.setState({
+                    searchContacts: []
+                })
             })
-        
         }
-
+        else{
+            this.setState({
+                searchContacts: []
+            })
+        }
     }
     
     render () {
@@ -85,8 +91,6 @@ export class SearchBar extends Component {
                     onChange={this.handleChange}
                 />
                 <br/><br/>
-                <p>Search Results</p>
-                <br/>
                 <div>            
                     {this.state.searchContacts.map(contact => {
                         return <div key={contact._id}>
